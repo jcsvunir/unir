@@ -1,0 +1,39 @@
+{
+  "name": "lantiaiot/billing_module",
+  "version": "1.0.0",
+  "description": "SDK for Billing module",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Juan Carlos Serrano",
+      "email": "serrano.juan.carlos@gmail.com"
+    }
+  ],
+  "require": {
+    "noodlehaus/config": "3.0.0",
+    "symfony/yaml": "6.4.0",
+    "mongodb/mongodb": "2.0.0",
+    "illuminate/database": "9.52.0",
+    "ramsey/uuid": "4.7.6",
+    "fpdf/fpdf": "^1.84",
+    "monolog/monolog": "3.3.0",
+    "league/flysystem": "3.29.1",
+    "league/flysystem-aws-s3-v3": "3.24.0",
+    "league/flysystem-google-cloud-storage": "3.28.0"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "Billing\\": "src/Billing",
+      "Models\\" : "src/Models",
+      "Exceptions\\" : "src/Exceptions",
+      "Core\\" : "src/Core"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
+  }
+}

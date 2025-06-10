@@ -1,0 +1,47 @@
+
+# MySQL configuration
+sql_storage:
+  driver: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: db_omv1
+  username: user_omv1
+  password: password_omv1
+
+
+nosql_storage:
+  driver: mongodb
+  uri: 'mongodb+srv://user:password@cluster.mongodb.net/admin'
+  database:
+  cdr_collection:
+
+billing:
+  csv:
+    delimiter: ';'
+    enclosure: '"'
+
+  aggretate_match:
+    idCustomer:
+      - "$in": '{customerEntity}'
+    month: '{month}'
+    year: '{year}'
+    transmission: 'D'
+  aggregate_group:
+    _id:
+      $substrBytes:
+        - "$network"
+        - 11
+        - 6
+    usageVolume:
+      $sum: "$durationR"
+  aggregate_sort:
+    _id: 1
+  aggregate_project:
+
+filesystem:
+  type: google-cloud-storage
+  project_id: iot-omv1
+  bucket_name: iot
+  path_prefix: omv1/billing
+  file_basename_template: '{year}{month}_{account_id}_OMV1_Billingdata.csv'
+
