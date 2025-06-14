@@ -1,6 +1,6 @@
 # SDK para Facturación de Servicios M2M/IoT en OMVs
 
-![PHP](https://img.shields.io/badge/PHP-8.0+-blueviolet) ![License](https://img.shields.io/badge/License-MIT-green) ![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen) ![Version](https://img.shields.io/badge/Version-1.0-blue)
+![PHP](https://img.shields.io/badge/PHP-8.0+-blueviolet) 
 
 Bienvenido al **SDK de Facturación M2M/IoT**, una solución de código abierto desarrollada en PHP para optimizar la facturación de servicios Machine-to-Machine (M2M) e Internet de las Cosas (IoT) en Operadores Móviles Virtuales (OMVs). Este proyecto, creado como parte de un Trabajo Fin de Grado en Ingeniería Informática, aborda los desafíos de la heterogeneidad de formatos de registros UDR/CDR y la necesidad de interoperabilidad, ofreciendo una herramienta flexible, escalable y adaptable a diversos modelos de negocio.
 
