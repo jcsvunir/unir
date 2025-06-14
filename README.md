@@ -124,15 +124,7 @@ Nota: Usa `composer update` con precaución, ya que puede introducir cambios que
      secret: <aws_secret_key>
      region: eu-west-1
      bucket: invoices-bucket
-   invoice_structure:
-     HDR_BILL_CYCLE_PERIOD:
-       type: concat
-       values: ["year", "month"]
-     HDRCUSTOMER_ID:
-       type: method
-       name: getCustomerAccountID
-       args: ["idCustomer"]
-     # Más configuraciones según Anexo C
+  
    ```
 
 3. **Crear las tablas de la base de datos relacional**:
