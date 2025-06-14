@@ -159,7 +159,7 @@ Nota: Usa `composer update` con precaución, ya que puede introducir cambios que
 
 ## 📜 Licencia
 
-Licenciado bajo la [Licencia MIT](LICENSE).
+TBD por la UNIR.
 
 ## 🙌 Agradecimientos
 
