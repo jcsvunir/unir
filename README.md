@@ -9,11 +9,10 @@ Bienvenido al **SDK de Facturación M2M/IoT**, una solución de código abierto 
 Este SDK permite a los OMVs procesar grandes volúmenes de registros UDR para generar facturas precisas y personalizadas. Soporta bases de datos relacionales (MySQL, PostgreSQL, SQL Server, Oracle) y no relacionales (MongoDB), con una arquitectura modular y configurable mediante ficheros YAML.
 
 ### ✨ Características Principales
-- **Flexibilidad**: Compatible con múltiples formatos de UDR/CDR y adaptable a diferentes OMVs.
+- **Flexibilidad**: Adaptable a diferentes OMVs.
 - **Escalabilidad**: Diseñado para entornos locales, servidores dedicados o clústeres de alta disponibilidad.
 - **Código Abierto**: Basado en componentes open-source, sin dependencia de soluciones comerciales.
-- **Alto Rendimiento**: Validado en un entorno real con datos de mayo de 2025.
-- **Interoperabilidad**: Soporte para almacenamiento en la nube (AWS S3, Google Cloud Storage) y generación de facturas en PDF.
+- **Interoperabilidad**: Soporte para almacenamiento en la nube (AWS S3, Google Cloud Storage) y generación de informes de pre-facturas en CSV.
 
 ## 🚀 Requisitos
 
