@@ -103,7 +103,7 @@ Nota: Usa `composer update` con precaución, ya que puede introducir cambios que
    cp config/config.yml.example config/config.yml
    ```
 2. **Editar `config.yml`**:
-   Configura las conexiones a las bases de datos, almacenamiento en la nube y la lógica de facturación específica del OMV. Ejemplo:
+   Configura las conexiones a las bases de datos, almacenamiento en la nube y la lógica de facturación específica del OMV (consultar TFG). Ejemplo:
    ```yaml
    database:
      relational:
@@ -129,26 +129,14 @@ Nota: Usa `composer update` con precaución, ya que puede introducir cambios que
 
 3. **Crear las tablas de la base de datos relacional**:
    Asegúrate de que las tablas (`Customers`, `Invoices`, `Invoice_details`) estén creadas conforme a los modelos en `src/Models`. Por ejemplo, para MySQL:
-   ```sql
-   CREATE DATABASE billing_db;
-   -- Ejecutar scripts SQL desde src/Models
-   ```
+   
 
 4. **Configurar MongoDB**:
    Crea la colección especificada para los registros UDR (e.g., `cdr_collection`):
-   ```bash
-   mongo cdr_db --eval 'db.createCollection("cdr_collection")'
-   ```
+  
 
 5. **Configurar SQL Server o Oracle (si aplica)**:
-   - Para SQL Server, instala el Microsoft ODBC Driver:
-     ```bash
-     # En Ubuntu
-     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-     curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
-     sudo apt-get update
-     sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
-     ```
+   - Para SQL Server, instala el Microsoft ODBC Driver.    
    - Para Oracle, instala Oracle Instant Client y configura las variables de entorno:
      ```bash
      export LD_LIBRARY_PATH=/path/to/oracle/instantclient_19_0:$LD_LIBRARY_PATH
