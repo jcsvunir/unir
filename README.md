@@ -22,7 +22,7 @@ Antes de instalar el SDK, asegúrate de cumplir con los siguientes requisitos:
 - **PHP**: Versión 8.0 o superior.
 - **Composer**: Versión 2.0 o superior.
 - **Bases de Datos**:
-  - Relacionales: MySQL (8.0+), PostgreSQL (13.0+), Microsoft SQL Server (2019+), Oracle (19c+).
+  - Relacionales: MySQL, PostgreSQL, Microsoft SQL Server, Oracle.
   - NoSQL: MongoDB (5.0+).
 - **Sistema Operativo**: Linux (recomendado), Windows o macOS.
 
