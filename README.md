@@ -154,5 +154,3 @@ TBD por la UNIR.
 A **Víctor Daniel Díaz Suárez**, director del TFG, y a la **Universidad Internacional de La Rioja (UNIR)** por su apoyo.
 
 ---
-
-⭐ **¡Dale una estrella al repositorio si te gusta el proyecto!** ⭐
