@@ -67,18 +67,21 @@ class OMV1InvoiceCyclePeriod extends AbstractInvoiceCyclePeriod
      * @return array
      */
     public function computeConsumption($document):array{
-        // Get unit charge
-        $unitCharge = $this->getUnitCharge($document);
+        // TODO: Implementar en función de la lógica de facturación del OMV1. A modo de ejemplo, proporcionamos un ejemplo básico.
+        /**
+         * $unitCharge = $this->getUnitCharge($document);
+         *
+         * return array(   OMV1CSVHeaderConst::HDR_BILL_CYCLE_PERIOD => $this->year . $this->month,
+         * OMV1CSVHeaderConst::HDR_CUSTOMER_ID => $this->getCustomerAccountID($this->idCustomer),
+         * OMV1CSVHeaderConst::HDR_CUSTOMER_NAME => $this->getCustomerName($this->idCustomer),
+         * OMV1CSVHeaderConst::HDR_PLMN_NAME => $this->getPLMNName($document->_id),
+         * OMV1CSVHeaderConst::HDR_MCCMNC => $document->_id,
+         * OMV1CSVHeaderConst::HDR_COUNTRY_NAME => $this->getCountryName($document),
+         * OMV1CSVHeaderConst::HDR_UNIT_CHARGE_MB => $unitCharge,
+         * OMV1CSVHeaderConst::HDR_USAGE_VOLUME_KB => $document->usageVolume,
+         * OMV1CSVHeaderConst::HDR_TOTAL_CHARGE => $unitCharge * ($document->usageVolume / 1024));
+         */
 
-        return array(   OMV1CSVHeaderConst::HDR_BILL_CYCLE_PERIOD => $this->year . $this->month,
-                        OMV1CSVHeaderConst::HDR_CUSTOMER_ID => $this->getCustomerAccountID($this->idCustomer),
-                        OMV1CSVHeaderConst::HDR_CUSTOMER_NAME => $this->getCustomerName($this->idCustomer),
-                        OMV1CSVHeaderConst::HDR_PLMN_NAME => $this->getPLMNName($document->_id),
-                        OMV1CSVHeaderConst::HDR_MCCMNC => $document->_id,
-                        OMV1CSVHeaderConst::HDR_COUNTRY_NAME => $this->getCountryName($document),
-                        OMV1CSVHeaderConst::HDR_UNIT_CHARGE_MB => $unitCharge,
-                        OMV1CSVHeaderConst::HDR_USAGE_VOLUME_KB => $document->usageVolume,
-                        OMV1CSVHeaderConst::HDR_TOTAL_CHARGE => $unitCharge * ($document->usageVolume / 1024));
     }
 
 
@@ -92,81 +95,85 @@ class OMV1InvoiceCyclePeriod extends AbstractInvoiceCyclePeriod
      */
     public function save($overWriteIfExists = false): string
     {
-        $timer = new Timer();
+        // TODO: Implementar en función de la estructura de datos para el almacenamiento de facturas en la base de datos. A modo de ejemplo, proporcionamos un ejemplo básico.
+        /**
+         * $timer = new Timer();
+         *
+         * $removeSuccess = true;
+         *
+         * if ($this->hasIssues()){
+         * throw new InvoiceIssuesException();
+         * }
+         *
+         * $data = $this->getInvoiceArray();
+         * $beginBillPeriod = $this->getBeginBillPeriod();
+         * $endBillPeriod = $this->getEndBillPeriod();
+         *
+         * $invoiceRecord = Invoice::where('id_customer', '=', $this->idCustomer)
+         * ->where('begin_bill_period', '=', $beginBillPeriod)
+         * ->where('end_bill_period', '=', $endBillPeriod)
+         * ->get();
+         *
+         * // Si existe la misma factura
+         * if ($invoiceRecord->isNotEmpty()) {
+         *
+         * $invoice = $invoiceRecord->first();
+         * $invoiceId = $invoice->id_invoice;
+         *
+         * if (!$overWriteIfExists) {
+         * throw new InvoiceAlreadyExistsException($invoiceId);
+         * }else{
+         * // Eliminar factura
+         * $removeSuccess = $this->removeInvoice($invoiceId);
+         * }
+         * }
+         *
+         * if ($removeSuccess){
+         * $idTAX = $this->getCustomerVATId($this->idCustomer);
+         * $invoiceId = uniqid("", true);
+         * $invoice = new Invoice();
+         * $invoice->id_invoice = $invoiceId;
+         * $invoice->id_customer = $this->idCustomer;
+         * $invoice->id_tax = $idTAX;
+         * $this->getInvoiceSummary($data, $idTAX, $subTotal, $taxTotal, $invoiceTotal);
+         * $invoice->sub_total = $subTotal;
+         * $invoice->tax_total = $taxTotal;
+         * $invoice->total_invoice = $invoiceTotal;
+         * $invoice->invoice_date = $timer->getDate();
+         * $invoice->due_date = $timer->getDueDate();
+         * $invoice->begin_bill_period = $beginBillPeriod;
+         * $invoice->end_bill_period = $endBillPeriod;
+         * $invoice->proforma = 0;
+         * $invoice->visible = 0;
+         * $invoice->canceled = 0;
+         * $invoice->review = 0;
+         * $invoice->manual = 0;
+         * $invoice->corrective = 0;
+         *
+         * // Guardamos factura
+         * if ($invoice->save()) {
+         * foreach ($data as $item) {
+         * $invoiceDetail = new InvoiceDetail();
+         * $invoiceDetail->id_details = uniqid("", true);
+         * $invoiceDetail->id_invoice = $invoiceId;
+         * $invoiceDetail->description = $item[OMV1CSVHeaderConst::HDR_PLMN_NAME] . " (" . $item[OMV1CSVHeaderConst::HDR_COUNTRY_NAME] . ")";
+         * $invoiceDetail->quantity = $item[OMV1CSVHeaderConst::HDR_USAGE_VOLUME_KB];
+         * $invoiceDetail->unit_price = $item[OMV1CSVHeaderConst::HDR_UNIT_CHARGE_MB];
+         * $invoiceDetail->total = $item[OMV1CSVHeaderConst::HDR_TOTAL_CHARGE];
+         * if (!$invoiceDetail->save()){
+         * throw new DBErrorException("Errors found inserting invoice details for Invoice#$invoiceId");
+         * }
+         * }
+         * } else {
+         * throw new DBErrorException("Errors found inserting new Invoice.");
+         * }
+         * }else{
+         * throw new DBErrorException("Errors found deleting existing invoice.");
+         * }
+         *
+         * return $invoiceId;
+         */
 
-        $removeSuccess = true;
-
-        if ($this->hasIssues()){
-            throw new InvoiceIssuesException();
-        }
-
-        $data = $this->getInvoiceArray();
-        $beginBillPeriod = $this->getBeginBillPeriod();
-        $endBillPeriod = $this->getEndBillPeriod();
-
-        $invoiceRecord = Invoice::where('id_customer', '=', $this->idCustomer)
-            ->where('begin_bill_period', '=', $beginBillPeriod)
-            ->where('end_bill_period', '=', $endBillPeriod)
-            ->get();
-
-        // Si existe la misma factura
-        if ($invoiceRecord->isNotEmpty()) {
-
-            $invoice = $invoiceRecord->first();
-            $invoiceId = $invoice->id_invoice;
-
-            if (!$overWriteIfExists) {
-                throw new InvoiceAlreadyExistsException($invoiceId);
-            }else{
-                // Eliminar factura
-                $removeSuccess = $this->removeInvoice($invoiceId);
-            }
-        }
-
-        if ($removeSuccess){
-            $idTAX = $this->getCustomerVATId($this->idCustomer);
-            $invoiceId = uniqid("", true);
-            $invoice = new Invoice();
-            $invoice->id_invoice = $invoiceId;
-            $invoice->id_customer = $this->idCustomer;
-            $invoice->id_tax = $idTAX;
-            $this->getInvoiceSummary($data, $idTAX, $subTotal, $taxTotal, $invoiceTotal);
-            $invoice->sub_total = $subTotal;
-            $invoice->tax_total = $taxTotal;
-            $invoice->total_invoice = $invoiceTotal;
-            $invoice->invoice_date = $timer->getDate();
-            $invoice->due_date = $timer->getDueDate();
-            $invoice->begin_bill_period = $beginBillPeriod;
-            $invoice->end_bill_period = $endBillPeriod;
-            $invoice->proforma = 0;
-            $invoice->visible = 0;
-            $invoice->canceled = 0;
-            $invoice->review = 0;
-            $invoice->manual = 0;
-            $invoice->corrective = 0;
-
-            // Guardamos factura
-            if ($invoice->save()) {
-                foreach ($data as $item) {
-                    $invoiceDetail = new InvoiceDetail();
-                    $invoiceDetail->id_details = uniqid("", true);
-                    $invoiceDetail->id_invoice = $invoiceId;
-                    $invoiceDetail->description = $item[OMV1CSVHeaderConst::HDR_PLMN_NAME] . " (" . $item[OMV1CSVHeaderConst::HDR_COUNTRY_NAME] . ")";
-                    $invoiceDetail->quantity = $item[OMV1CSVHeaderConst::HDR_USAGE_VOLUME_KB];
-                    $invoiceDetail->unit_price = $item[OMV1CSVHeaderConst::HDR_UNIT_CHARGE_MB];
-                    $invoiceDetail->total = $item[OMV1CSVHeaderConst::HDR_TOTAL_CHARGE];
-                    if (!$invoiceDetail->save()){
-                        throw new DBErrorException("Errors found inserting invoice details for Invoice#$invoiceId");
-                    }
-                }
-            } else {
-                throw new DBErrorException("Errors found inserting new Invoice.");
-            }
-        }else{
-            throw new DBErrorException("Errors found deleting existing invoice.");
-        }
-
-        return $invoiceId;
     }
 
     /**
