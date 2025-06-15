@@ -119,11 +119,10 @@ Nota: Usa `composer update` con precaución, ya que puede introducir cambios que
        database: cdr_db
        collection: cdr_collection
    storage:
-     driver: s3
-     key: <aws_access_key>
-     secret: <aws_secret_key>
-     region: eu-west-1
-     bucket: invoices-bucket
+      type: google-cloud-storage
+      project_id: iot-omv1
+      bucket_name: iot
+      path_prefix: omv1/billing
   
    ```
 
