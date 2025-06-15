@@ -14,6 +14,10 @@ use Models\OMV1\OMV1CustomerPrice;
 use Models\OMV1\OMV1NetworkOperator;
 use Models\OMV1\Tax;
 
+/**
+ * Todos los de este Trait, son proporcionados a modo de ejemplo. Cada implemtación de DataRoutine, deberá incorporar aquellos métodos que considere necesarios para su lógica de negocio.
+ *
+ */
 trait DataRoutine
 {
 
@@ -139,7 +143,6 @@ trait DataRoutine
             $result = array();
         }
 
-        //print_r($result);
         return $result;
 
     }
@@ -175,7 +178,7 @@ trait DataRoutine
             $result = $this->getDefaultVATId();
         }
 
-        //echo "\n" . __FUNCTION__ . " Result:$result\n";
+
         return $result;
     }
 
